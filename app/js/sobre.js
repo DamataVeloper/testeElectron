@@ -7,8 +7,8 @@ const linkTwitter = document.querySelector('#link-twitter');
 const versaoElectron = document.querySelector('#versao-electron');
 
 window.onload = () =>{
-    //versaoElectron.textContent = process.versions.electron;
-    versaoElectron.textContent = process.versions.chrome;
+    versaoElectron.textContent = process.versions.electron;
+    //versaoElectron.textContent = process.versions.chrome;
 }
 
 linkFechar.addEventListener('click', ()=>{
