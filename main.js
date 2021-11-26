@@ -2,7 +2,7 @@
 // BrowserWindow -> cria a janela do app
 
 const { app, BrowserWindow, ipcMain} = require('electron');
-//const { BrowserWindow } = require ('electron');
+
 
 app.on('ready', () => {
     console.log("Aplicacao iniciada");
@@ -18,7 +18,6 @@ app.on('ready', () => {
 
 
     });    
-    //mainWindow.loadURL('https://cursos.dankicode.com/');
     mainWindow.loadURL(`file://${__dirname}/app/index.html`)    
 });
 
@@ -26,13 +25,32 @@ app.on('window-all-closed', () =>{
     app.quit();
 });
 
+
+let sobreWindow = null;
 ipcMain.on('abrir-janela-sobre', () =>{
-    let sobreWindow = new BrowserWindow({
-        width: 300,
-        height: 300
-        
-    });
-    console.log("Aplicacao Sobre");
+    if( sobreWindow == null){
+        sobreWindow = new BrowserWindow({
+            width: 300,
+            height: 300,
+            alwaysOnTop: true,
+            frame: false,
+            webPreferences: {
+                devTools: false,
+                nodeIntegration: true,
+                contextIsolation: false,
+            }
+
+        });
+
+        sobreWindow.on('closed', () =>{
+            sobreWindow = null
+        });
+    }
     sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
+});
+
+
+ipcMain.on('fechar-janela-sobre', ()=>{
+    sobreWindow.close();
 })
 
