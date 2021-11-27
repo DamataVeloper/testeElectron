@@ -50,7 +50,7 @@ ipcMain.on('abrir-janela-sobre', () =>{
 });
 
 
-ipcMain.on('fechar-janela-sobre', ()=>{
+ipcMain.on('fechar-janela-sobre', () =>{
     sobreWindow.close();
 })
 

@@ -1,6 +1,6 @@
 const {ipcRenderer, shell} = require('electron');
 const process = require('process');
-const Renderer = require('electron/renderer');
+//const Renderer = require('electron/renderer');
 
 const linkFechar = document.querySelector('#link-fechar');
 const linkTwitter = document.querySelector('#link-twitter');
